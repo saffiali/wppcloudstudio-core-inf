@@ -18,5 +18,5 @@ steps:
     location: 'UK South'
     templateLocation: 'Linked artifact'
     csmFile: 'active-directory-new-domain-ha-2-dc/azuredeploy.json'
-    overrideParameters: '-adminUsername hznadmin -adminPassword Emily1001 -domainName wppcloud.studio -location uksouth -dnsPrefix wppcloudstudio'
+    overrideParameters: '-adminUsername hznadmin -adminPassword Emily1001 -domainName wppcloud.studio -location uksouth -dnsPrefix wppcloudstudio -_artifactsLocation active-directory-new-domain-ha-2-dc/'
     deploymentMode: 'Incremental'
