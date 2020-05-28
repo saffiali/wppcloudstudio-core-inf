@@ -11,14 +11,13 @@ pool:
 
 steps:
 - task: AzureResourceManagerTemplateDeployment@3
-
   inputs:
     deploymentScope: 'Subscription'
     azureResourceManagerConnection: 'AzureRmPipeline-conn'
     subscriptionId: '23b7dac6-cdf3-4feb-814f-1a76c48fe1c5'
     location: 'UK South'
-    templateLocation: 'URL of the file'
-    csmFileLink: 'https://raw.githubusercontent.com/jimmellor/wppcloudstudio-core-inf/master/active-directory-new-domain-ha-2-dc/azuredeploy.json?token=AABRDGCVZQFHQSEYJROSUMS6Z576O'
-    csmParametersFileLink: 'https://raw.githubusercontent.com/jimmellor/wppcloudstudio-core-inf/master/active-directory-new-domain-ha-2-dc/azuredeploy.parameters.json?token=AABRDGCYHEKVPO3BYHJKERC6Z6ANU'
+    templateLocation: 'Linked artifact'
+    csmFile: 'active-directory-new-domain-ha-2-dc/azuredeploy.json'
+    csmParametersFile: 'active-directory-new-domain-ha-2-dc/azuredeploy.parameters.json'
     overrideParameters: '-adminUsername hznadmin -adminPassword Emily1001 -domainName wppcloud.studio -location uksouth -dnsPrefix wppcloudstudio'
     deploymentMode: 'Incremental'
