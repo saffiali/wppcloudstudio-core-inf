@@ -12,13 +12,11 @@ pool:
 steps:
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
-    deploymentScope: 'Resource Group'
+    deploymentScope: 'Subscription'
+    azureResourceManagerConnection: 'AzureRmPipeline-conn'
     subscriptionId: '23b7dac6-cdf3-4feb-814f-1a76c48fe1c5'
-    action: 'Create Or Update Resource Group'
-    resourceGroupName: 'prd-wppcs-inf-core'
     location: 'UK South'
     templateLocation: 'Linked artifact'
     csmFile: 'active-directory-new-domain-ha-2-dc/azuredeploy.json'
     overrideParameters: '-adminUsername hznadmin -adminPassword Emily1001 -domainName wppcloud.studio -location uksouth'
     deploymentMode: 'Incremental'
-    deploymentName: 'Deployment Pipeline Template'
