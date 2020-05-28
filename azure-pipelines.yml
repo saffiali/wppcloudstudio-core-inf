@@ -21,5 +21,4 @@ steps:
     csmFileLink: 'https://raw.githubusercontent.com/jimmellor/wppcloudstudio-core-inf/master/active-directory-new-domain-ha-2-dc/azuredeploy.json?token=AABRDGCVZQFHQSEYJROSUMS6Z576O'
     csmParametersFileLink: 'https://github.com/jimmellor/wppcloudstudio-core-inf/blob/master/active-directory-new-domain-ha-2-dc/azuredeploy.parameters.json'
     overrideParameters: '-adminUsername hznadmin -adminPassword Emily1001 -domainName wppcloud.studio -location uksouth -dnsPrefix wppcloudstudio'
-    deploymentMode: 'Incremental''
     deploymentMode: 'Incremental'
