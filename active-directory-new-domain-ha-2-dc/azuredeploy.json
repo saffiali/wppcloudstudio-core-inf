@@ -99,13 +99,13 @@
         "adDataDiskSize": 1000,
         "vnetTemplateUri": "[concat(parameters('_artifactsLocation'), 'nestedtemplates/vnet.json')]",
         "nicTemplateUri": "[concat(parameters('_artifactsLocation'), 'nestedtemplates/nic.json')]",
-        "vnetwithDNSTemplateUri": "[parameters('_artifactsLocation'), 'nestedtemplates/vnet-with-dns-server.json']",
-        "configureADBDCTemplateUri": "[parameters('_artifactsLocation'), 'nestedtemplates/configureADBDC.json']",
-        "adPDCModulesURL": "[parameters('_artifactsLocation'), 'DSC/CreateADPDC.zip']",
+        "vnetwithDNSTemplateUri": "[concat(parameters('_artifactsLocation'), 'nestedtemplates/vnet-with-dns-server.json')]",
+        "configureADBDCTemplateUri": "[concat(parameters('_artifactsLocation'), 'nestedtemplates/configureADBDC.json')]",
+        "adPDCModulesURL": "[parameters(concat('_artifactsLocation'), 'DSC/CreateADPDC.zip']",
         "adPDCConfigurationFunction": "CreateADPDC.ps1\\CreateADPDC",
         "adBDCPreparationModulesURL": "[concat(parameters('_artifactsLocation'), 'DSC/PrepareADBDC.zip')]",
         "adBDCPreparationFunction": "PrepareADBDC.ps1\\PrepareADBDC",
-        "adBDCConfigurationModulesURL": "[parameters('_artifactsLocation'), 'DSC/ConfigureADBDC.zip']",
+        "adBDCConfigurationModulesURL": "[concat(parameters('_artifactsLocation'), 'DSC/ConfigureADBDC.zip')]",
         "adBDCConfigurationFunction": "ConfigureADBDC.ps1\\ConfigureADBDC"
     },
     "resources": [
