@@ -45,7 +45,7 @@
             "metadata": {
                 "description": "The location of resources, such as templates and DSC modules, that the template depends on"
             },
-            "defaultValue": "[deployment().properties.template.uri]"
+            "defaultValue": ""
         },
         "_artifactsLocationSasToken": {
             "type": "securestring",
@@ -140,7 +140,7 @@
             "apiVersion": "2019-09-01",
             "properties": {
                 "mode": "Incremental",
-                "template": {
+                "templateLink": {
                     "uri": "[variables('vnetTemplateUri')]",
                     "contentVersion": "1.0.0.0"
                 },
@@ -384,7 +384,7 @@
             ],
             "properties": {
                 "mode": "Incremental",
-                "template": {
+                "templateLink": {
                     "uri": "[variables('vnetwithDNSTemplateUri')]",
                     "contentVersion": "1.0.0.0"
                 },
@@ -422,7 +422,7 @@
             ],
             "properties": {
                 "mode": "Incremental",
-                "template": {
+                "templateLink": {
                     "uri": "[variables('nicTemplateUri')]",
                     "contentVersion": "1.0.0.0"
                 },
@@ -556,7 +556,7 @@
             ],
             "properties": {
                 "mode": "Incremental",
-                "template": {
+                "templateLink": {
                     "uri": "[variables('configureADBDCTemplateUri')]",
                     "contentVersion": "1.0.0.0"
                 },
@@ -594,7 +594,7 @@
             ],
             "properties": {
                 "mode": "Incremental",
-                "template": {
+                "templateLink": {
                     "uri": "[variables('vnetwithDNSTemplateUri')]",
                     "contentVersion": "1.0.0.0"
                 },
