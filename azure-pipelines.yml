@@ -16,7 +16,7 @@ steps:
     azureResourceManagerConnection: 'AzureRmPipeline-conn'
     subscriptionId: '23b7dac6-cdf3-4feb-814f-1a76c48fe1c5'
     location: 'UK South'
-    templateLocation: 'Linked artifact'
+    templateLocation: 'URL of the file'
     # csmFile: 'active-directory-new-domain-ha-2-dc/azuredeploy.json'
     csmFileLink: 'https://raw.githubusercontent.com/jimmellor/wppcloudstudio-core-inf/master/active-directory-new-domain-ha-2-dc/azuredeploy.json?token=AABRDGFX42YKZFR63FPISXK62DAIE'
     csmParametersFileLink: 'https://raw.githubusercontent.com/jimmellor/wppcloudstudio-core-inf/master/active-directory-new-domain-ha-2-dc/azuredeploy.parameters.json?token=AABRDGDLAJ4XL3VQ2IAYYY262DAKA'
