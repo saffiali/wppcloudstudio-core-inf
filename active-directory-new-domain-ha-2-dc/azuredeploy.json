@@ -101,7 +101,7 @@
         "nicTemplateUri": "[concat(parameters('_artifactsLocation'), 'nestedtemplates/nic.json')]",
         "vnetwithDNSTemplateUri": "[concat(parameters('_artifactsLocation'), 'nestedtemplates/vnet-with-dns-server.json')]",
         "configureADBDCTemplateUri": "[concat(parameters('_artifactsLocation'), 'nestedtemplates/configureADBDC.json')]",
-        "adPDCModulesURL": "[parameters(concat('_artifactsLocation'), 'DSC/CreateADPDC.zip']",
+        "adPDCModulesURL": "[concat(parameters('_artifactsLocation'), 'DSC/CreateADPDC.zip')]",
         "adPDCConfigurationFunction": "CreateADPDC.ps1\\CreateADPDC",
         "adBDCPreparationModulesURL": "[concat(parameters('_artifactsLocation'), 'DSC/PrepareADBDC.zip')]",
         "adBDCPreparationFunction": "PrepareADBDC.ps1\\PrepareADBDC",
