@@ -23,5 +23,5 @@ steps:
     #csmFileLink: 'https://raw.githubusercontent.com/jimmellor/wppcloudstudio-core-inf/master/active-directory-new-domain-ha-2-dc/azuredeploy.json'
     #csmParametersFileLink: 'https://raw.githubusercontent.com/jimmellor/wppcloudstudio-core-inf/master/active-directory-new-domain-ha-2-dc/azuredeploy.parameters.json'
     csmParametersFile: 'active-directory-new-domain-ha-2-dc/azuredeploy.parameters.json'
-    overrideParameters: '-adminUsername adadmin -adminPassword ad@@1dminpassword!! -domainName wppcloud.studio -location "West Europe" -dnsPrefix wppcloudstudio -_artifactsLocation "active-directory-new-domain-ha-2-dc/" -_remoteArtifactsLocation "https://raw.githubusercontent.com/jimmellor/wppcloudstudio-core-inf/master/active-directory-new-domain-ha-2-dc"'
+    overrideParameters: '-adminUsername adadmin -adminPassword ad@@1dminpassword!! -resourceNamePrefix "prod-wppcs-" -domainName wppcloud.studio -location "West Europe" -dnsPrefix wppcloudstudio -_artifactsLocation "active-directory-new-domain-ha-2-dc/" -_remoteArtifactsLocation "https://raw.githubusercontent.com/jimmellor/wppcloudstudio-core-inf/master/active-directory-new-domain-ha-2-dc"'
     deploymentMode: 'Incremental'
