@@ -26,6 +26,12 @@
                 "description": "The DNS prefix for the public IP address used by the Load Balancer"
             }
         },
+        "resourceNamePrefix": {
+            "type": "string",
+            "metadata": {
+                "description": "Name prefix for all deployed resources"
+            }
+        },
         "pdcRDPPort": {
             "type": "int",
             "metadata": {
@@ -78,27 +84,27 @@
     },
     "variables": {
         "storageAccountType": "Premium_LRS",
-        "adPDCVMName": "adPDC",
-        "adBDCVMName": "adBDC",
+        "adPDCVMName": "[concat(parameters('resourceNamePrefix), 'ad-pc']",
+        "adBDCVMName": "[concat(parameters('resourceNamePrefix), 'ad-bc']",
         "imagePublisher": "MicrosoftWindowsServer",
         "imageOffer": "WindowsServer",
         "imageSKU": "2016-Datacenter",
-        "adAvailabilitySetName": "adAvailabiltySet",
-        "publicIPAddressName": "ad-lb-pip",
+        "adAvailabilitySetName": "[concat(parameters('resourceNamePrefix), 'ad-avail-set']",
+        "publicIPAddressName": "[concat(parameters('resourceNamePrefix), 'ad-lb-pip')]",
         "adLBFE": "LBFE",
         "adLBBE": "LBBE",
         "adPDCRDPNAT": "adPDCRDP",
         "adBDCRDPNAT": "adBDCRDP",
-        "virtualNetworkName": "adVNET",
+        "virtualNetworkName": "ad-vnet",
         "virtualNetworkAddressRange": "10.0.0.0/16",
-        "adSubnetName": "adSubnet",
+        "adSubnetName": "[concat(parameters('resourceNamePrefix), 'ad-subnet",
         "adSubnet": "10.0.0.0/24",
-        "adPDCNicName": "adPDCNic",
+        "adPDCNicName": "[concat(parameters('resourceNamePrefix), 'ad-pdc-nic",
         "adPDCNicIPAddress": "10.0.0.4",
-        "adBDCNicName": "adBDCNic",
+        "adBDCNicName": "[concat(parameters('resourceNamePrefix), 'ad-bdc-nic",
         "adBDCNicIPAddress": "10.0.0.5",
         "adSubnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('adSubnetName'))]",
-        "adLBName": "adLoadBalancer",
+        "adLBName": "[concat(parameters('resourceNamePrefix), 'ad-lb')]",
         "adlbFEConfigID": "[resourceId('Microsoft.Network/loadBalancers/frontendIPConfigurations', variables('adLBName'), variables('adLBFE'))]",
         "adPDCRDPNATRuleID": "[resourceId('Microsoft.Network/loadBalancers/inboundNatRules', variables('adLBName'), variables('adPDCRDPNAT'))]",
         "adBDCRDPNATRuleID": "[resourceId('Microsoft.Network/loadBalancers/inboundNatRules', variables('adLBName'), variables('adBDCRDPNAT'))]",
