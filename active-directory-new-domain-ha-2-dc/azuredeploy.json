@@ -89,7 +89,7 @@
         "imagePublisher": "MicrosoftWindowsServer",
         "imageOffer": "WindowsServer",
         "imageSKU": "2016-Datacenter",
-        "adAvailabilitySetName": "[concat(parameters('resourceNamePrefix'), 'ad-avail-set']",
+        "adAvailabilitySetName": "[concat(parameters('resourceNamePrefix'), 'ad-avail-set')]",
         "publicIPAddressName": "[concat(parameters('resourceNamePrefix'), 'ad-lb-pip')]",
         "adLBFE": "LBFE",
         "adLBBE": "LBBE",
