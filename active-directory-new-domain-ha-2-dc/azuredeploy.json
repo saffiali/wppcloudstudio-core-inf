@@ -30,6 +30,11 @@
             "type": "string",
             "metadata": {
                 "description": "Name prefix for all deployed resources"
+            },
+        "ipBlockPrefix": {
+            "type": "string",
+            "metadata": {
+                "description": "IP block prefix for the AD network"
             }
         },
         "pdcRDPPort": {
@@ -95,14 +100,14 @@
         "adLBBE": "LBBE",
         "adPDCRDPNAT": "adPDCRDP",
         "adBDCRDPNAT": "adBDCRDP",
-        "virtualNetworkName": "[concat(parameters('resourceNamePrefix'), 'ad-vnet')]",
-        "virtualNetworkAddressRange": "10.0.0.0/16",
+        "virtualNetworkName": "[concat(parameters('resourceNamePrefix'), 'core-vnet')]",
+        "virtualNetworkAddressRange": "concat(parameters('ipBlockPrefix'), '0/16')]",
         "adSubnetName": "[concat(parameters('resourceNamePrefix'), 'ad-subnet')]",
-        "adSubnet": "10.0.0.0/24",
+        "adSubnet": "concat(parameters('ipBlockPrefix'), '0/24')]",
         "adPDCNicName": "[concat(parameters('resourceNamePrefix'), 'ad-pdc-nic')]",
-        "adPDCNicIPAddress": "10.0.0.4",
+        "adPDCNicIPAddress": "concat(parameters('ipBlockPrefix'), '4')]",
         "adBDCNicName": "[concat(parameters('resourceNamePrefix'), 'ad-bdc-nic')]",
-        "adBDCNicIPAddress": "10.0.0.5",
+        "adBDCNicIPAddress": "concat(parameters('ipBlockPrefix'), '5')]",
         "adSubnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('adSubnetName'))]",
         "adLBName": "[concat(parameters('resourceNamePrefix'), 'ad-lb')]",
         "adlbFEConfigID": "[resourceId('Microsoft.Network/loadBalancers/frontendIPConfigurations', variables('adLBName'), variables('adLBFE'))]",
