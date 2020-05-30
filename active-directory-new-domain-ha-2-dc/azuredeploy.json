@@ -90,8 +90,8 @@
     },
     "variables": {
         "storageAccountType": "Premium_LRS",
-        "adPDCVMName": "[concat(parameters('resourceNamePrefix'), 'ad-pc')]",
-        "adBDCVMName": "[concat(parameters('resourceNamePrefix'), 'ad-bc')]",
+        "adPDCVMName": "[replace(concat(parameters('resourceNamePrefix'), 'ad-pc'),'-', '')]",
+        "adBDCVMName": "[replace(concat(parameters('resourceNamePrefix'), 'ad-bc'),'-', '')]",
         "imagePublisher": "MicrosoftWindowsServer",
         "imageOffer": "WindowsServer",
         "imageSKU": "2016-Datacenter",
