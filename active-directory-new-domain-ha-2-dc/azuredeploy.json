@@ -30,7 +30,8 @@
             "type": "string",
             "metadata": {
                 "description": "Name prefix for all deployed resources"
-            },
+            }
+        },
         "ipBlockPrefix": {
             "type": "string",
             "metadata": {
