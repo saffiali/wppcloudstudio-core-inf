@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Hub",
+    "\\Hub\\Network",
+    "\\Hub\\Pipelines",
+    "\\Hub\\PKI",
+    "\\Hub\\Storage",
+    "\\Spokes",
+    "\\Spokes\\UK"
+  ],
+  "SelectedNode": "\\Hub\\Pipelines\\NestedTemplates",
+  "PreviewInSolutionExplorer": false
+}

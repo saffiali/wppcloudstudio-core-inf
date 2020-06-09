@@ -1,0 +1,126 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+parameters:
+- name: ARMConnection
+  type: string
+  default: WPP.CC.PreProd(XXXX-XXXX-XXXX-XXX-XXXX)
+- name: azureSubscriptionID
+  type: string
+  default: WPP.CC.PreProd(XXXX-XXXX-XXXX-XXX-XXXX)
+- name: resourcePrefix
+  type: string
+  default: cc-preprod
+  values:
+  - cc-prod
+  - cc-preprod
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+- name: resource-prefix
+  value: cc
+
+- name: resource-location
+  value: uksouth 
+
+steps:
+
+- script: |
+    echo WPP Creative Cloud Hub deployment started.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a minitial message'
+
+
+- task: AzSKARMTemplateChecker@4
+  name: AZSKforNetwork
+  inputs:
+    ARMTemplateFilePath: '/Hub/Network'
+    ARMTemplateParameterFilePath: '/Hub/Network'
+
+- task: AzSKARMTemplateChecker@4
+  name: AZSKforStorage
+  inputs:
+    ARMTemplateFilePath: '/Hub/Storage'
+    ARMTemplateParameterFilePath: '/Hub/Storage'
+
+- task: AzSKARMTemplateChecker@4
+  name: AZSKforIdentity
+  inputs:
+    ARMTemplateFilePath: '/Hub/Identity'
+    ARMTemplateParameterFilePath: '/Hub/Identity'
+
+
+- task: AzureCLI@2
+  displayName: CreateResourceGroups
+  inputs:
+    azureSubscription: ${{ parameters.azureSubscriptionID }}
+    scriptType: 'bash'
+    scriptLocation: 'scriptPath'
+    scriptPath: '/Scripts/CreateRG.bat'
+
+
+
+- task: AzureResourceManagerTemplateDeployment@3
+  displayName: Create Or Update Hub Network
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: ${{ parameters.ARMConnection }}
+    subscriptionId: ${{ parameters.azureSubscriptionID }}
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'rg-CCHub-network-preprod'
+    location: 'UK South'
+    templateLocation: 'Linked artifact'
+    csmFile: '/Hub/Network/hub.network.json'
+    csmParametersFile: '/Hub/Network/hub.network.parameters.json'
+    deploymentMode: 'Incremental'
+
+- task: AzureResourceManagerTemplateDeployment@3
+  displayName: Create Or Update Hub Storage
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: ${{ parameters.ARMConnection }}
+    subscriptionId: ${{ parameters.azureSubscriptionID }}
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'rg-bc-dev'
+    location: 'UK South'
+    templateLocation: 'Linked artifact'
+    csmFile: '/Hub/Network/hub.storage.json'
+    csmParametersFile: '/Hub/Storage/hub.storage.parameters.json'
+    deploymentMode: 'Incremental'
+
+- task: AzureResourceManagerTemplateDeployment@3
+  displayName: Create Or Update Hub Identity
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: ${{ parameters.ARMConnection }}
+    subscriptionId: ${{ parameters.azureSubscriptionID }}
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'rg-bc-dev'
+    location: 'UK South'
+    templateLocation: 'Linked artifact'
+    csmFile: '/Hub/Network/hub.identity.json'
+    csmParametersFile: '/Hub/Identity/hub.identity.parameters.json'
+    deploymentMode: 'Incremental'
+
+
+- task: AzureResourceManagerTemplateDeployment@3
+  displayName: Create Or Update Hub PKI
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: ${{ parameters.ARMConnection }}
+    subscriptionId: ${{ parameters.azureSubscriptionID }}
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'rg-bc-dev'
+    location: 'UK South'
+    templateLocation: 'Linked artifact'
+    csmFile: '/Hub/PKI/hub.pki.json'
+    csmParametersFile: '/Hub/PKI/hub.pki.parameters.json'
+    deploymentMode: 'Incremental'
+
